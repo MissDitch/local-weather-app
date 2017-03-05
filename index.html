@@ -4,8 +4,10 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
       <title></title>
-      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">      <link href='https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,500,600,700,900' rel='stylesheet' type='text/css'>
+   <!--   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">  -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">      
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,500,600,700,900' rel='stylesheet' type='text/css'>
       <link rel="stylesheet" href="css/main.css">
       <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
   </head>
@@ -37,31 +39,7 @@
       <div id="location" class="col-xs-12 loc ">   your location   
       </div>   <!-- End loc-->  
       
-      <div id="" class="modal-overlay "> 
-        <div class="modal-box">
-           <div class="modal-header">
-             <a id="close" class="modal-close">&times;</a>
-          <p> Not your location? <br>You can choose another: 
-          </p>           
-        </div>   
-        <div id="" class="col-xs-12 modal-content">     
-           <form id="" action="" class="locationForm" name="locationForm">
-             
-             <div>
-               <label>City Name: <input id="city" type="text" placeholder="city"></label>               
-            </div>
-            <div> 
-              <label>Country Code: <input id="country" type="text" placeholder="NL" ></label> 
-            </div>           
-            <div id="" class="col-xs-12 ">
-              <button id="locBtn" type="button" class="btn " >Choose</button>
-            </div>   
-             
-           </form> 
-            </div> 
-           
-        </div>    <!-- End modal-->                
-      </div>   <!-- End  modal-overlay-->  
+     
       
           
         <div class="col-xs-12  temp">
@@ -90,13 +68,52 @@
 </div>  <!-- End container -->
 
 
+
+<div class="modal fade" id="locModal" tabindex="-1" role="dialog" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Choose other location</h4>
+       
+      </div>
+      <div class="modal-body">
+          <form id="locForm" action="" class="locationForm" name="locationForm">
+             
+             <div class="form-input">
+               <label for="city">City Name: </label>  
+               <input id="city" class="form-control" type="text" placeholder="city">             
+            </div>
+            <div class="form-input"> 
+              <label for="country">Country Code: </label> 
+              <input id="country"  class="form-control" type="text" placeholder="NL" >
+            </div>             
+           
+           </form> 
+      </div>
+      <div class="modal-footer">       
+        <button id="locBtn" type="button" class="btn " data-dismiss="modal" >Save changes</button>  
+        <!-- <button type="button" class="btn" data-dismiss="modal">Close</button>  -->
+      </div>
+    </div>  <!-- End modal-content-->  
+  </div>  <!-- End modal-dialog -->   
+</div>  <!-- End modal fade-->   
+
+  
+
+
+
+ 
+
 <nav class="navbar navbar-fixed-bottom">         
 
 	<div class="col-xs-12" id="myNavbar">
   
        <button id="tempBtn" type="button" class="btn " data-toggle="temperature">Convert to Fahrenheit</button>
       
-       <button id="changeLocBtn" type="button" class="btn " >Choose other location</button>
+       <button id="changeLocBtn" type="button" class="btn " data-toggle="modal"  data-target="#locModal">Choose other location</button>
    
          
     

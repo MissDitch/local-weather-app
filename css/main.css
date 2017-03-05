@@ -20,43 +20,23 @@ body {
 	padding: 20px;
   text-align: center;
 }
-.notVisible {
-  display: none;
-}
-.modal-box {
- /*  display: visible;
- // position: absolute;
-//   width: 300px;
-//  height: 500px;
-*/
-}
-.modal-overlay {
-   background-color: var(--transparent);
-      z-index: 100;
-  position: absolute;
-  top: 125px;
-  height: 230px; 
+ 
 
-}
-.modal-box,
-.modal-overlay { 
+/*  modal   */
 
-  visibility: hidden;
-  opacity: 0;
-}
-.modal-box.active,
-.modal-overlay.active {
-  visibility: visible;
-  opacity: 1;
-}
-.modal-close {
+label {
+  text-align: right;
+} 
+button.close {
   padding: 20px;
-  font-size: 20px;
-float: right;
+  font-size: 25px;
+  opacity: .5;
+
 }
-.modal-close:hover {
-  text-decoration: none;
+.form-input {
+  margin: 10px 10px;
 }
+
 
 #location {
   font-size: 30px;
