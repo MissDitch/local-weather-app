@@ -1,0 +1,114 @@
+
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title></title>
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">      <link href='https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,500,600,700,900' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" href="css/main.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+  </head>
+
+  <body>
+    <noscript>
+      <p>This page requires a JavaScript-enabled browser.</p>
+    </noscript>
+    
+    
+   <!--<nav class="navbar navbar-fixed-top">         
+  <div class="navbar-header col-xs-12 col-sm-6">    
+      <a class="navbar-brand" href="#">The weather right here right now</a>			 
+  </div>
+  
+	<div class="col-xs-12 col-sm-6" id="topNavbar">
+      <ul class="nav navbar-nav navbar-right">        
+        <li id="topBtn">button comes here</li>      
+      </ul>     
+  </div>    
+</nav>  -->
+
+
+<div id="" class="container">  
+    <div class="main col-xs-12">
+      <h4>The weather in</h4>         
+   
+          
+      <div id="location" class="col-xs-12 loc ">   your location   
+      </div>   <!-- End loc-->  
+      
+      <div id="" class="modal-overlay "> 
+        <div class="modal-box">
+           <div class="modal-header">
+             <a id="close" class="modal-close">&times;</a>
+          <p> Not your location? <br>You can choose another: 
+          </p>           
+        </div>   
+        <div id="" class="col-xs-12 modal-content">     
+           <form id="" action="" class="locationForm" name="locationForm">
+             
+             <div>
+               <label>City Name: <input id="city" type="text" placeholder="city"></label>               
+            </div>
+            <div> 
+              <label>Country Code: <input id="country" type="text" placeholder="NL" ></label> 
+            </div>           
+            <div id="" class="col-xs-12 ">
+              <button id="locBtn" type="button" class="btn " >Choose</button>
+            </div>   
+             
+           </form> 
+            </div> 
+           
+        </div>    <!-- End modal-->                
+      </div>   <!-- End  modal-overlay-->  
+      
+          
+        <div class="col-xs-12  temp">
+      <span  id="temperature">8</span><span id="grade">°C</span> 
+        </div>   <!-- End temp-->
+      
+         <div class="col-xs-12  ">
+     <div id="icon" class="">
+                   icon comes here
+          </div>   <!-- End icon-->        
+       
+      
+        <div class="row">   
+              
+          
+          <div id="description" class="col-xs-6 col-md-4 col-md-offset-2 detail">
+                   description comes here
+          </div>   <!-- End description-->   
+          
+          <div id="wind" class="col-xs-6 col-md-4  detail">
+                   wind comes here
+          </div>   <!-- End wind-->    
+       </div>   <!-- End row -->
+          
+    </div>  <!-- End main -->    
+</div>  <!-- End container -->
+
+
+<nav class="navbar navbar-fixed-bottom">         
+
+	<div class="col-xs-12" id="myNavbar">
+  
+       <button id="tempBtn" type="button" class="btn " data-toggle="temperature">Convert to Fahrenheit</button>
+      
+       <button id="changeLocBtn" type="button" class="btn " >Choose other location</button>
+   
+         
+    
+   
+    
+  </div>
+</nav> 
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <script src="js/main.js"></script>
+
+    </body>
+</html>
