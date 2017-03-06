@@ -1,5 +1,5 @@
 :root {
-	--transparent: rgba(244,244,239, 0.5);
+	--transparent: rgba(255,255,255, 0.6);
   --light: rgba(244,244,239, 1); /* #f4f4f0; lightest grey in icons cloud  */
   --dark: #0d0735;  /* rgba(13, 7, 53, 1) black in icons */
 
@@ -10,36 +10,45 @@
 }
 body {
   color: var(--dark);
-	font-family: 'Open Sans';
+	/* font-family: 'Montserrat', sans-serif; 
+  font-family: 'Dosis', sans-serif;
+  font-weight: 300; */
+  font-family: 'Raleway', sans-serif;
+   font-weight: 400;
   background-color: var(--blue);
 }	
 .container {
   padding: 0px 0;
 }
 .main { 
-  background-color: var(--transparent);
-	border-radius: 10px;
-   border: 4px solid var(--light);
-	padding-top: 10px;
-  margin-top: 60px;
+  background-color: var(--transparent);	
+  position: absolute;
+  top:0;
+  bottom: 0;
   text-align: center;
+  margin-top: 0px;
+    padding-top: 80px;
+    border: 0px;
 }
 #location {
-  font-size: 30px;
+   font-size: 24px;  
+   font-weight: 600;
+  padding-top: 10px;
 }
-#description {
-    font-size: 24px;
-    padding: 20px 0 0 0;
+#description {    
+    font-size: 20px;
+    padding: 6px 0 0 0;
 }
 .temp {
-  font-size: 100px;
+  font-size: 80px;
+  font-weight: 600;
 }
 #temperature:after {
  content: "\00B0";
 }
 .detail{
   margin: 0px;
-  margin-bottom: 100px; 
+  margin-bottom: 50px; 
    width: 128px;
   height: 128px;
   float:left;
@@ -64,6 +73,7 @@ svg {
 
 #beaufort {
   font-size: 24px;
+  font-weight: 800;
   border-radius: 50%;
   border: 4px solid var(--blue);  
   width: 56px;
@@ -90,6 +100,7 @@ svg {
     border-top: 0px solid var(--blue);
 }
 .modal-title {
+  font-weight: 800;
     margin: 10px;
     line-height: 1.42857143;
 }
@@ -114,12 +125,13 @@ button.close {
    background-color: white;
    margin: 0 5px;
   font-size: 13px;
+   font-weight: 800;
 }
 button{
   color: var(--dark);
   padding: 10px;
   margin: 20px;
-  font-weight: 900;
+ // font-weight: 800;
 }
 button:hover{
   opacity: 0.7;
@@ -129,8 +141,9 @@ button:hover{
 
 /*  navbar */
 .navbar {
-	background-color:var(--light);
+	background-color: #07b4cf;
   text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,.5);
 }
 .navbar-nav {
 	margin: 0;
@@ -139,8 +152,8 @@ button:hover{
     border-width: 0px;
 }
 .navbar-brand {
-    font-weight: 300;
-    color: var(--dark);
+    font-weight: 600;
+    color: #ffffff;
     text-align: center;
     float: none;
     margin: 0px;
@@ -153,9 +166,30 @@ button{
   color: var(--dark);
   padding: 10px;
   margin: 20px;
-  font-weight: 900;
+  font-weight: 600;
 }
 button:hover{
   opacity: 0.7;
 }
 
+/* Small only */
+@media screen and (min-width: 39.9375em) {
+ 
+.main {
+  border-radius: 10px;
+  border: 4px solid var(--light);
+	padding-top: 20px;
+  margin-top: 90px;
+  position: relative;
+  }
+ #location {
+    font-size: 30px;
+}
+#description {
+    font-size: 24px;
+}
+.temp {
+    font-size: 100px;
+}
+  
+}   
