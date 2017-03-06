@@ -86,7 +86,7 @@ function changeLocation(e) {
   console.log("country is " + country);
   getWeatherByLocation(city, country);
  hideForm();
-    $("#tempBtn").innerHTML = "Convert to Fahrenheit";
+    $("#tempBtn").innerHTML = "To Fahrenheit";
 }
 
 function getWeatherByLocation(city, country) {  
@@ -132,7 +132,7 @@ function getWeatherByCoord(latitude, longitude) {
   
 function showWeather(data) {
   	isCelsius = true;
-    $("#tempBtn").innerHTML = "Convert to Fahrenheit";
+    $("#tempBtn").innerHTML = "To Fahrenheit";
   console.log(data);
   console.log("isCelsius is: "  + isCelsius);
   var city = data.name;
@@ -150,7 +150,7 @@ function showWeather(data) {
        $("#wind").html("wind: "  + compassDirection + ", " + beaufort + " Beaufort"); 
   console.log("showWeather is Celsius is: " + isCelsius);
   if(isCelsius){
-      $("#tempBtn").html("Convert to Fahrenheit");
+      $("#tempBtn").html("To Fahrenheit");
     
   }
   
@@ -208,7 +208,7 @@ function changeGrade(e) {
     // read temperature  
   var temp = $("#temperature").html();  
   if (isCelsius) {
-		e.target.innerHTML = "Convert to Celsius";
+		e.target.innerHTML = "To Celsius";
 		isCelsius = false; 
     //console.log("isCelsius is: "  + isCelsius);
     var newTemp = convert(toFahrenheit, temp);
@@ -216,7 +216,7 @@ function changeGrade(e) {
   	$("#grade").html("F");
 	}
 	else {
-		e.target.innerHTML = "Convert to Fahrenheit";  
+		e.target.innerHTML = "To Fahrenheit";  
 		isCelsius = true;
     //console.log("isCelsius is: "  + isCelsius);
     var newTemp = convert(toCelsius, temp);
