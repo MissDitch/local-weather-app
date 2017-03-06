@@ -144,21 +144,54 @@ function showWeather(data) {
        $("#icon").html('<img alt="weather icon" class="" src="http://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/' +  data.weather[0].icon + '.png">'); 
        $("#description").html(data.weather[0].description); 
       var degree = data.wind.deg;
-      var compassDirection = toCompassDirection(degree);
+      console.log("degree is: " + degree);
+   
+     var windDirection = changeDirection("wind" ,degree);
       var beaufort = toBeaufort(data.wind.speed);
-      
-       $("#wind").html("wind: "  + compassDirection + ", " + beaufort + " Beaufort"); 
+
+     var arrowDirection = changeDirection("arrow", degree);
+       $("#beaufort").html(beaufort); 
+
+       var altText = "wind: "  + windDirection + ", " + beaufort + " Beaufort";
+       $("#wind").attr("alt", altText);
+    
+       $("#arrow").css("transform", "rotate(" + arrowDirection + "deg)");
   console.log("showWeather is Celsius is: " + isCelsius);
   if(isCelsius){
       $("#tempBtn").html("To Fahrenheit");
     
-  }
-  
+  }  
 }
 
+function changeDirection(typeOfDirection, degree) {
+  var array = [];
+  if(typeOfDirection == "arrow") {
+     array = [180, 225, 270, 315, 360, 45, 90, 135, 180];
+  }
+  else if(typeOfDirection == "wind") {
+    array = ["North", "NorthEast", "East", "SouthEast", "South", "SouthWest", "West", "NorthWest", "North" ]; 
+  }   
+  var degr = degree;
+  if (degree > 360) {
+    degr = degree % 360;
+  }
+  var index = Math.round(degr / 45);
+  return array[index];
+}
 
-function toCompassDirection(degree) {
-  var directions = ["North", "NorthEast", "East", "SouthEast", "South", "SouthWest", "West", "NorthWest", "North" ];
+/*
+function toArrowDirection(degree) {
+  var degrees =  [180, 225, 270, 315, 360, 45, 90, 135, 180];
+  var degr = degree;
+  if (degree > 360) {
+    degr = degree % 360;
+  }
+  var index = Math.round(degr / 45);
+  return degrees[index];
+}
+
+function toWindDirection(degree) {
+  var directions = ["North", "NorthEast", "East", "SouthEast", "South", "SouthWest", "West", "NorthWest", "North" ]; 
   var degr = degree;
   if (degree > 360) {
     degr = degree % 360;
@@ -166,6 +199,7 @@ function toCompassDirection(degree) {
   var index = Math.round(degr / 45);
   return directions[index];
 }
+*/
 
 function between(x, min, max) {
     return x >= min && x <= max;

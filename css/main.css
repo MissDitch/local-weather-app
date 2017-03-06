@@ -38,26 +38,38 @@ body {
  content: "\00B0";
 }
 .detail{
-  background-color: var(--light); 
   margin: 0px;
   margin-bottom: 100px; 
- 
-}
-.detail img, .detail svg {
-  width: 128px;
+   width: 128px;
   height: 128px;
-   background-color: var(--light); 
+  float:left;
+
 }
-#icon {
-  width: 128px;
-  height: 128px;
-  float: left;
+.detail:last-child{
+  float:right;
+}
+.stack {
+  position:relative; 
+}
+.stackChild {
+  position: absolute; 
+  left: 36px; 
+  top: 36px;
+  z-index: 2;
+}
+svg {
+  transform: rotate(0deg);
+  transform-origin: 50%;
 }
 
-#wind {
-  width: 128px;
-  height: 128px;
-  float: right;
+#beaufort {
+  font-size: 24px;
+  border-radius: 50%;
+  border: 4px solid var(--blue);  
+  width: 56px;
+  height: 56px;  
+  padding: 4px;
+  background-color: var(--light);
 }
 
  
