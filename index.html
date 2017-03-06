@@ -17,54 +17,42 @@
       <p>This page requires a JavaScript-enabled browser.</p>
     </noscript>
     
-    
-   <!--<nav class="navbar navbar-fixed-top">         
-  <div class="navbar-header col-xs-12 col-sm-6">    
-      <a class="navbar-brand" href="#">The weather right here right now</a>			 
-  </div>
-  
-	<div class="col-xs-12 col-sm-6" id="topNavbar">
-      <ul class="nav navbar-nav navbar-right">        
-        <li id="topBtn">button comes here</li>      
-      </ul>     
-  </div>    
-</nav>  -->
 
 
-<div id="" class="container">  
-    <div class="main col-xs-12">
-      <h4>The weather in</h4>         
+ <!-- begin codepen code -->       
+
+
+<div id="" class="container">   
+    <div class="main col-xs-12 col-md-8 col-md-offset-2">
+      <p>The weather in</p>         
    
           
       <div id="location" class="col-xs-12 loc ">   your location   
-      </div>   <!-- End loc-->  
+      </div>   <!-- End location-->  
       
-     
-      
-          
-        <div class="col-xs-12  temp">
-      <span  id="temperature">8</span><span id="grade">°C</span> 
-        </div>   <!-- End temp-->
-      
-         <div class="col-xs-12  ">
-     <div id="icon" class="">
-                   icon comes here
-          </div>   <!-- End icon-->        
-       
-      
-        <div class="row">   
-              
-          
-          <div id="description" class="col-xs-6 col-md-4 col-md-offset-2 detail">
+     <div id="description" class="col-xs-12 desc">
                    description comes here
           </div>   <!-- End description-->   
           
-          <div id="wind" class="col-xs-6 col-md-4  detail">
+        <div class="col-xs-12  temp">
+      <span  id="temperature">8</span><span id="grade">C</span> 
+        </div>   <!-- End temp-->      
+     
+        <div class="row ">  
+          <div class="col-xs-12 col-md-8 col-md-offset-2 "> 
+              
+           <div id="icon" class=" detail">
+                   icon comes here
+          </div>   <!-- End icon-->    
+          
+          
+          <div id="wind" class=" detail">
                    wind comes here
-          </div>   <!-- End wind-->    
+          </div>   <!-- End wind-->  
+          </div>  
        </div>   <!-- End row -->
           
-    </div>  <!-- End main -->    
+    </div>  <!-- End main -->   
 </div>  <!-- End container -->
 
 
@@ -88,7 +76,7 @@
             </div>
             <div class="form-input"> 
               <label for="country">Country Code: </label> 
-              <input id="country"  class="form-control" type="text" placeholder="NL" >
+              <input id="country"  class="form-control" type="text" placeholder="nl, gb, sp, de, us, etc" >
             </div>             
            
            </form> 
@@ -101,26 +89,23 @@
   </div>  <!-- End modal-dialog -->   
 </div>  <!-- End modal fade-->   
 
-  
-
-
-
- 
 
 <nav class="navbar navbar-fixed-bottom">         
 
-	<div class="col-xs-12" id="myNavbar">
-  
+	<div class="col-xs-12" id="myNavbar">  
        <button id="tempBtn" type="button" class="btn " data-toggle="temperature">Convert to Fahrenheit</button>
-      
        <button id="changeLocBtn" type="button" class="btn " data-toggle="modal"  data-target="#locModal">Choose other location</button>
-   
-         
-    
-   
-    
-  </div>
+       </div>
 </nav> 
+
+
+
+
+ <!-- end codepen code -->     
+
+
+
+
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

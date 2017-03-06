@@ -1,13 +1,8 @@
 $(document).ready(function() {	
   init();
   $("#tempBtn").click(changeGrade);
-  $("#locBtn").click(changeLocation);
-  $("#changeLocBtn").click(showForm);
-   $("#close").click(hideForm);
- 
+  $("#locBtn").click(changeLocation); 
 })
-/////// make this be returned by a function?
- var isCelsius = true; 
 
 function init() {  
  
@@ -145,7 +140,7 @@ function showWeather(data) {
    var address = city + ", " + country;
     $("#location").html(address); 
     $("#temperature").html(Math.round(data.main.temp)); 
-  $("#grade").html("°C");
+  $("#grade").html("C");
        $("#icon").html('<img alt="weather icon" class="" src="http://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/' +  data.weather[0].icon + '.png">'); 
        $("#description").html(data.weather[0].description); 
       var degree = data.wind.deg;
@@ -193,6 +188,8 @@ function toBeaufort(windSpeed) {
     if (windSpeed > 32.7) {return beaufort = 12;}
 }
 
+var isCelsius = true; 
+
 function toCelsius(degFahren) {
   var degCel = 5 / 9 * (degFahren - 32);
   return Math.round(degCel);
@@ -206,42 +203,29 @@ function convert(converter, temperature) {
   return converter(temperature);
 }
 
+
 function changeGrade(e) {
-    // read temperature
-  
- var temp = $("#temperature").html();  
+    // read temperature  
+  var temp = $("#temperature").html();  
   if (isCelsius) {
-  //  $(this).innerHTML = "Convert to Celsius";
 		e.target.innerHTML = "Convert to Celsius";
 		isCelsius = false; 
-      console.log("isCelsius is: "  + isCelsius);
-var newTemp = convert(toFahrenheit, temp);
-      $("#temperature").html(Math.round(newTemp));
-$("#grade").html("°F");
+    //console.log("isCelsius is: "  + isCelsius);
+    var newTemp = convert(toFahrenheit, temp);
+    $("#temperature").html(Math.round(newTemp));
+  	$("#grade").html("F");
 	}
 	else {
- //   $(this).innerHTML = "Convert to Fahrenheit";
-		e.target.innerHTML = "Convert to Fahrenheit";
-  
+		e.target.innerHTML = "Convert to Fahrenheit";  
 		isCelsius = true;
-      console.log("isCelsius is: "  + isCelsius);
+    //console.log("isCelsius is: "  + isCelsius);
     var newTemp = convert(toCelsius, temp);
-     $("#temperature").html(newTemp);
-    $("#grade").html("°C");
+    $("#temperature").html(newTemp);
+    $("#grade").html("C");
 	} 
 }
 
-function showForm() {
-  $(".modal-box").addClass("active");
-  $(".modal-overlay").addClass("active");
-}
-
-function hideForm() {
-    $(".modal-box").removeClass("active");
-  $(".modal-overlay").removeClass("active");
-}
-
-
+//(function() {})();
 
 
 
