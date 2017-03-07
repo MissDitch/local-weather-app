@@ -92,7 +92,7 @@ svg {
 .modal-content{
   border: 0px solid var(--blue);
   background-color: var(--light);
-  padding: 0px 15px 0 15px;
+  padding: 0px 0px 0 0px;
 }
 .modal-header {
   border-bottom: 0px solid var(--blue);

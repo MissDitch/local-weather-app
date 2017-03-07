@@ -2,6 +2,17 @@ $(document).ready(function() {
   init();
   $("#tempBtn").click(changeGrade);
   $("#locBtn").click(changeLocation); 
+
+  $("#locModal").on("shown.bs.modal", function () {
+    $('#city').focus();
+  });
+  $("#locModal").on("hidden.bs.modal", function (e) {
+    $(this)
+    .find("input")
+       .val('')
+       .end();   
+  });
+
 })
 
 function init() {   
@@ -144,13 +155,12 @@ function showWeather(data) {
 }
 
 function changeLocation(e) {
+   $("#message").html("");
   var city = $("#city").val();
 //  console.log("city is: "+ city);
   var country = $("#country").val();
 //  console.log("country is " + country);
-  getWeatherByLocation(city, country);
-  //$("#city").val() = "";
- // $("#country").val() = "";
+  getWeatherByLocation(city, country); 
   $("#tempBtn").html("To Fahrenheit");
 }
 
