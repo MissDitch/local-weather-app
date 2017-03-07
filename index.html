@@ -3,15 +3,13 @@
 <html class="no-js" lang="en" dir="ltr">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title></title>
-   <!--   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">  -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">      
-   <!--    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">  -->  
-     <!--   <link href="https://fonts.googleapis.com/css?family=Dosis:300,600,800" rel="stylesheet">-->  
-      <link href="https://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet">
-      <link rel="stylesheet" href="css/main.css">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Local Weather App</title> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">      
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
   </head>
 
   <body>
@@ -23,69 +21,45 @@
 
  <!-- begin codepen code -->   
 
-<nav class="navbar navbar-fixed-top text-center">         
-   
-      <h6 class="navbar-brand" href="#">Local Weather App</h6>			 
- 
-  
-<!--	<div class="col-xs-12 col-sm-6" id="topNavbar">
-      <ul class="nav navbar-nav navbar-right">        
-        <li id="topBtn">button comes here</li>     
-      </ul>     --> 
-   
+<nav class="navbar navbar-fixed-top text-center">    
+  <h6 class="navbar-brand" href="#">Local Weather App</h6> 
 </nav>  
-   
-
 
 <div id="" class="container">   
-    <div class="main col-xs-12 col-md-8 col-md-offset-2">
-    
-          
-      <div id="location" class="col-xs-12 loc ">   Your location 
-      </div>   <!-- End location-->  
+  <div class="main col-xs-12 col-md-8 col-md-offset-2">            
+      <div id="location" class="col-xs-12 loc ">Waiting for location...</div>   <!-- End location--> 
 
-      <div id="details" class="col-xs-12 invisible">
-      
-       <div id="description" class="col-xs-12 desc">
-                 description
-          </div>   <!-- End description-->   
+      <div id="message" class="col-xs-12"></div>   <!-- End message-->  
+
+      <div id="details" class="col-xs-12 invisible">      
+        <div id="description" class="col-xs-12 desc"></div>   <!-- End description-->  
           
         <div class="col-xs-12  temp">
-      <span id="temperature">8</span><span id="grade">C</span> 
+          <span id="temperature">8</span><span id="grade">C</span> 
         </div>   <!-- End temp-->      
      
         <div class="row ">  
           <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 "> 
               
-           <div id="icon1" class="detail">
-                 
-          </div>   <!-- End icon-->    
+            <div id="icon1" class="detail"></div>   <!-- End icon1-->           
           
-          
-          <div id="icon2" class="detail">
-            <div class="stack">
-           <svg  version="1.1" id="arrow" xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" width="101.459" height="127.221"
-	 viewBox="0 0 101.459 127.221" overflow="visible" enable-background="new 0 0 99.459 125.221" xml:space="preserve">
-<polyline fill="none" stroke="#3aebfd" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" points="97.459,49.73 
-	49.729,3 3,49.73 "/>
-<line fill="none" stroke="#3aebfd" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x1="49.729" y1="123.221" x2="49.729" y2="3"/>
-</svg>
+            <div id="icon2" class="detail">
+              <div class="stack">
+                <svg  version="1.1" id="arrow" xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" width="101.459" height="127.221" viewBox="0 0 101.459 127.221" overflow="visible" enable-background="new 0 0 99.459 125.221" xml:space="preserve">
+                  <polyline fill="none" stroke="#3aebfd" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" points="97.459,49.73	49.729,3 3,49.73 "/>
+                  <line fill="none" stroke="#3aebfd" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" x1="49.729" y1="123.221" x2="49.729" y2="3"/>
+                </svg>
 
-  <div id="beaufort" class="stackChild">
-
-  </div>
-</div> <!-- End stack-->  
-    
- </div> <!-- End wind-->  
-                   
+                <div id="beaufort" class="stackChild"></div>    <!-- end beaufort--> 
+              </div> <!-- End stack-->     
+            </div> <!-- End icon2-->                    
                   
-           </div>  
-       </div>   <!-- End row -->
-        
+          </div>   <!-- End col-xs-12 etc -->  
+        </div>   <!-- End row -->        
 
-         </div>  <!-- End invisible-->  
+      </div>  <!-- End invisible-->       
           
-    </div>  <!-- End main -->   
+  </div>  <!-- End main -->   
 </div>  <!-- End container -->
 
 
@@ -94,41 +68,39 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         <h4 class="modal-title">Choose other location</h4>
        
       </div>
       <div class="modal-body">
-          <form id="locForm" action="" class="locationForm" name="locationForm">
+        <form id="locForm" action="" class="locationForm" name="locationForm">
              
-             <div class="form-input">
-               <label for="city">City Name: </label>  
-               <input id="city" class="form-control" type="text" placeholder="city">             
-            </div>
-            <div class="form-input"> 
-              <label for="country">Country Code: </label> 
-              <input id="country"  class="form-control" type="text" placeholder="nl, gb, sp, de, us, etc" >
-            </div>             
+          <div class="form-input">
+            <label for="city">City Name: </label>  
+            <input id="city" class="form-control" type="text" placeholder="city">             
+          </div>
+          <div class="form-input"> 
+            <label for="country">Country Code: </label> 
+            <input id="country"  class="form-control" type="text" placeholder="nl, gb, sp, de, us, etc" >
+          </div>             
            
-           </form> 
-      </div>
+        </form> 
+      </div>   <!-- End modal-body-->
       <div class="modal-footer">       
         <button id="locBtn" type="button" class="btn " data-dismiss="modal" >Save changes</button>  
-        <!-- <button type="button" class="btn" data-dismiss="modal">Close</button>  -->
-      </div>
+      </div>   <!-- End modal-footer-->
     </div>  <!-- End modal-content-->  
   </div>  <!-- End modal-dialog -->   
-</div>  <!-- End modal fade-->   
+</div>  <!-- End modal-->   
 
 
-<nav class="navbar navbar-fixed-bottom">         
-
-	<div class="" id="myNavbar">  
-       <button id="tempBtn" type="button" class="btn " data-toggle="temperature">To Fahrenheit</button>
-       <button id="changeLocBtn" type="button" class="btn " data-toggle="modal"  data-target="#locModal">Other location</button>
-       </div>
+<nav class="navbar navbar-fixed-bottom"> 
+  <div class="" id="myNavbar">  
+    <button id="tempBtn" type="button" class="btn " data-toggle="temperature">To Fahrenheit</button>
+    <button id="changeLocBtn" type="button" class="btn " data-toggle="modal"  data-target="#locModal">Other location</button>
+  </div>
 </nav> 
 
 
@@ -139,9 +111,9 @@
 
 
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
     <script src="js/main.js"></script>
 
-    </body>
+  </body>
 </html>

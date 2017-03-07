@@ -4,68 +4,60 @@ $(document).ready(function() {
   $("#locBtn").click(changeLocation); 
 })
 
-function init() {  
- 
-  var queryString = "";
-  
+function init() {   
   if (navigator.geolocation) {
- //  if ("geolocation" in navigator) { 
+ //  if browser supports geolocation API
 	navigator.geolocation.getCurrentPosition(success, error);
+  }
+  else {
+    getPositionApprox();
+    // $("#location").html("no location found");
   }
   
   function success(pos) {  
-  var crd = pos.coords;
-  queryString = makeQueryString(crd.latitude, crd.longitude);
-//  console.log("pos: " + queryString);
-  $.ajax( {
-    url: queryString,
-    success: function(data) {
-      var address = data.results[1].formatted_address;
-   $("#location").html(address); 
-   getWeatherByCoord(crd.latitude, crd.longitude);
-    },
-    cache: false
-  });
-}
+   getPositionPrecise(pos);
+  }
 
-function error(err) {
-    $("#altLocation").removeClass("notVisible");
-  /*the latest Chrome turned off support for geolocation API on insecure networks. 
-  This works, although position is not as accurate:
-  */
-   $.ajax({
-      url: "https://ipinfo.io/geo",
-      success: function(data) {
-      //  console.log(data);
-        var latlong = data.loc.split(',');
-     //   console.log(latlong);
-        latitude = latlong[0];
-        longitude = latlong[1];
-      //  console.log("latitude: " + latitude);
-      //  console.log("longitude: " + longitude);
-        queryString = makeQueryString(latitude, longitude);
-       //  console.log(queryString);
-         $.ajax( {
-    url: queryString,
-    success: function(data){
-     var address = data.results[1].formatted_address;
-     $("#location").html(address); 
-     getWeatherByCoord(latitude, longitude);
-    },
-    cache: false
-  });
-      }
-    });  
-//  console.log("err: " + queryString);  
- $("#location").html("no location found");
-}
-  
-
-  
+  function error(err) {
+   console.log(err.code); 
+   console.log(err.message);   
+   getPositionApprox();
+// $("#location").html("no location found");
+  }  
 }   /* end init  */
 
 //https://crossorigin.me/ //not working anymore
 //https://cors-anywhere.herokuapp.com/
+
+
+function getPositionPrecise(pos) {
+  var crd = pos.coords;
+  var queryString = makeQueryString(crd.latitude, crd.longitude);
+   console.log("pos precise: " + queryString);
+
+ //  displayLocation(queryString);
+   getWeatherByCoord(crd.latitude, crd.longitude);  
+}
+
+/*latest Chrome turned off support for geolocation API on insecure networks. 
+  This works, although position is not as accurate  */
+function getPositionApprox() {
+  $("#message").html("Getting your exact position failed. Click 'Other location' to get it.");
+  $.ajax({
+      url: "https://ipinfo.io/geo",
+      success: function(data) {
+        var latlong = data.loc.split(',');
+        latitude = latlong[0];
+        longitude = latlong[1];  
+        var queryString = makeQueryString(latitude, longitude);
+        console.log("pos approximately: " + queryString);
+
+   //     displayLocation(queryString);
+        getWeatherByCoord(latitude, longitude);        
+      },
+      cache:false
+    });  
+}
 
 function makeQueryString(latitude, longitude) {
    var queryString = "http://maps.googleapis.com/maps/api/geocode/json?latlng=";
@@ -78,49 +70,23 @@ var queryString = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName
  
   return queryString;
 }
-
-function changeLocation(e) {
-  var city = $("#city").val();
-  console.log("city is: "+ city);
-  var country = $("#country").val();
-  console.log("country is " + country);
-  getWeatherByLocation(city, country);
- hideForm();
-    $("#tempBtn").innerHTML = "To Fahrenheit";
-}
-
-function getWeatherByLocation(city, country) {  
-  var queryString = makeQueryStringAlt(city, country);
-  $.ajax( {
+/*
+function displayLocation(queryString) {
+   $.ajax( {
     url: queryString,
-    success:function(data) {
-      showWeather(data); 
-    
-      
+    success: function(data){
+     var address = data.results[1].formatted_address;
+     $("#location").html(address); 
     },
     cache: false
-  });  
-}
-
-
-
-/*function showPosition(data) {
-   console.log(data);
-   var address = data.results[1].formatted_address;
-   $("#location").html("Your current position is: <br>" + address); 
-   getWeather(crd.latitude, crd.longitude);
+  });
 }
 */
-// http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139
-// http://api.openweathermap.org/data/2.5/forecast/city?id=524901&APPID=e499501d29e2da5a054467f5367424bc
-
-//http://maps.googleapis.com/maps/api/geocode/json?latlng=44.4647452,7.3553838&sensor=true
-
 
 function getWeatherByCoord(latitude, longitude) {
    //api.openweathermap.org/data/2.5/weather?lat=35&lon=139
   var queryString = "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude +  "&lon=" + longitude + "&units=metric&APPID=e499501d29e2da5a054467f5367424bc";
-   console.log(queryString);//http://openweathermap.org/api_station
+ //  console.log(queryString);//http://openweathermap.org/api_station
   $.ajax( {
     url: queryString,
     success: function(data) {    
@@ -129,39 +95,63 @@ function getWeatherByCoord(latitude, longitude) {
     cache: false
   });  
 }
-  
+
+/* only called when user changes location herself */
+function getWeatherByLocation(city, country) {  
+  var queryString = makeQueryStringAlt(city, country);
+  $.ajax( {
+    url: queryString,
+    success:function(data) {
+      showWeather(data);       
+    },
+    cache: false
+  });  
+}
+ 
 function showWeather(data) {
-  	isCelsius = true;
-    $("#tempBtn").innerHTML = "To Fahrenheit";
-  console.log(data);
-  console.log("isCelsius is: "  + isCelsius);
+  isCelsius = true;
+  $("#tempBtn").html("To Fahrenheit");
+
+  //display location
   var city = data.name;
   var country = data.sys.country;
-   var address = city + ", " + country;
-    $("#location").html(address); 
-    $("#temperature").html(Math.round(data.main.temp)); 
+  var address = city + ", " + country;
+  $("#location").html(address); 
+
+   //display description
+  $("#description").html(data.weather[0].description); 
+
+   //display temperature
+  $("#temperature").html(Math.round(data.main.temp)); 
   $("#grade").html("C");
-       $("#icon1").html('<img alt="weather icon" class="" src="http://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/' +  data.weather[0].icon + '.png">'); 
-       $("#description").html(data.weather[0].description); 
-      var degree = data.wind.deg;
-      console.log("degree is: " + degree);
-   
-     var windDirection = changeDirection("wind" ,degree);
-      var beaufort = toBeaufort(data.wind.speed);
 
-     var arrowDirection = changeDirection("arrow", degree);
-       $("#beaufort").html(beaufort); 
+   //display first icon
+  $("#icon1").html('<img alt="weather icon" class="" src="http://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/' +  data.weather[0].icon + '.png">'); 
+   //display second icon
+  var degree = data.wind.deg; 
+  var windDirection = changeDirection("wind" ,degree);
+  var beaufort = toBeaufort(data.wind.speed);
+  $("#beaufort").html(beaufort); 
+  var arrowDirection = changeDirection("arrow", degree);
+  $("#arrow").css("transform", "rotate(" + arrowDirection + "deg)"); 
 
-       var altText = "wind: "  + windDirection + ", " + beaufort + " Beaufort";
-       $("#icon2").attr("alt", altText);
-    
-       $("#arrow").css("transform", "rotate(" + arrowDirection + "deg)");
-       $("#details").removeClass("invisible");
-  console.log("showWeather is Celsius is: " + isCelsius);
-  if(isCelsius){
-      $("#tempBtn").html("To Fahrenheit");
-    
-  }  
+  //alt attribute of second icon:
+  var altText = "wind: "  + windDirection + ", " + beaufort + " Beaufort";
+  $("#icon2").attr("alt", altText);   
+
+  //show the weather 
+  $("#details").removeClass("invisible");
+}
+
+function changeLocation(e) {
+  var city = $("#city").val();
+//  console.log("city is: "+ city);
+  var country = $("#country").val();
+//  console.log("country is " + country);
+  getWeatherByLocation(city, country);
+  //$("#city").val() = "";
+ // $("#country").val() = "";
+  $("#tempBtn").html("To Fahrenheit");
 }
 
 function changeDirection(typeOfDirection, degree) {
@@ -179,28 +169,6 @@ function changeDirection(typeOfDirection, degree) {
   var index = Math.round(degr / 45);
   return array[index];
 }
-
-/*
-function toArrowDirection(degree) {
-  var degrees =  [180, 225, 270, 315, 360, 45, 90, 135, 180];
-  var degr = degree;
-  if (degree > 360) {
-    degr = degree % 360;
-  }
-  var index = Math.round(degr / 45);
-  return degrees[index];
-}
-
-function toWindDirection(degree) {
-  var directions = ["North", "NorthEast", "East", "SouthEast", "South", "SouthWest", "West", "NorthWest", "North" ]; 
-  var degr = degree;
-  if (degree > 360) {
-    degr = degree % 360;
-  }
-  var index = Math.round(degr / 45);
-  return directions[index];
-}
-*/
 
 function between(x, min, max) {
     return x >= min && x <= max;
