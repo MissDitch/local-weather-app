@@ -13,7 +13,7 @@ $(document).ready(function() {
        .end();   
   });
 
-})
+});
 
 function init() {   
   if (navigator.geolocation) {
@@ -22,7 +22,6 @@ function init() {
   }
   else {
     getPositionApprox();
-    // $("#location").html("no location found");
   }
   
   function success(pos) {  
@@ -33,8 +32,7 @@ function init() {
    console.log(err.code); 
    console.log(err.message);   
    getPositionApprox();
-// $("#location").html("no location found");
-  }  
+  } 
 }   /* end init  */
 
 //https://crossorigin.me/ //not working anymore
@@ -53,7 +51,10 @@ function getPositionPrecise(pos) {
 /*latest Chrome turned off support for geolocation API on insecure networks. 
   This works, although position is not as accurate  */
 function getPositionApprox() {
-  $("#message").html("Getting your exact position failed. Click 'Other location' to get it.");
+  var message =  $("#message");
+  message.html("Getting your exact position failed. Click 'Other location' to get it.");
+  message.css("background-color", "var(--blue)");
+  message.removeClass("invisible");
   $.ajax({
       url: "https://ipinfo.io/geo",
       success: function(data) {
@@ -63,7 +64,6 @@ function getPositionApprox() {
         var queryString = makeQueryString(latitude, longitude);
         console.log("pos approximately: " + queryString);
 
-   //     displayLocation(queryString);
         getWeatherByCoord(latitude, longitude);        
       },
       cache:false
@@ -81,23 +81,9 @@ var queryString = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName
  
   return queryString;
 }
-/*
-function displayLocation(queryString) {
-   $.ajax( {
-    url: queryString,
-    success: function(data){
-     var address = data.results[1].formatted_address;
-     $("#location").html(address); 
-    },
-    cache: false
-  });
-}
-*/
 
 function getWeatherByCoord(latitude, longitude) {
-   //api.openweathermap.org/data/2.5/weather?lat=35&lon=139
   var queryString = "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude +  "&lon=" + longitude + "&units=metric&APPID=e499501d29e2da5a054467f5367424bc";
- //  console.log(queryString);//http://openweathermap.org/api_station
   $.ajax( {
     url: queryString,
     success: function(data) {    
@@ -120,7 +106,10 @@ function getWeatherByLocation(city, country) {
 }
  
 function showWeather(data) {
-  isCelsius = true;
+  var celsius = $("#grade").hasClass("isCelsius");
+  if(!celsius) {
+     $("#grade").addClass("isCelsius");
+  }
   $("#tempBtn").html("To Fahrenheit");
 
   //display location
@@ -154,8 +143,8 @@ function showWeather(data) {
   $("#details").removeClass("invisible");
 }
 
-function changeLocation(e) {
-   $("#message").html("");
+function changeLocation(e) {  
+  $("#message").addClass("invisible");
   var city = $("#city").val();
 //  console.log("city is: "+ city);
   var country = $("#country").val();
@@ -201,8 +190,6 @@ function toBeaufort(windSpeed) {
     if (windSpeed > 32.7) {return beaufort = 12;}
 }
 
-var isCelsius = true; 
-
 function toCelsius(degFahren) {
   var degCel = 5 / 9 * (degFahren - 32);
   return Math.round(degCel);
@@ -219,26 +206,26 @@ function convert(converter, temperature) {
 
 function changeGrade(e) {
     // read temperature  
-  var temp = $("#temperature").html();  
-  if (isCelsius) {
+  var temp = $("#temperature").html(); 
+  var grade = $("#grade");
+  var celsius = grade.hasClass("isCelsius");
+  if (celsius) {
 		e.target.innerHTML = "To Celsius";
-		isCelsius = false; 
+		grade.removeClass("isCelsius");
     //console.log("isCelsius is: "  + isCelsius);
     var newTemp = convert(toFahrenheit, temp);
     $("#temperature").html(Math.round(newTemp));
-  	$("#grade").html("F");
+  	grade.html("F");
 	}
 	else {
 		e.target.innerHTML = "To Fahrenheit";  
-		isCelsius = true;
+		grade.addClass("isCelsius");
     //console.log("isCelsius is: "  + isCelsius);
     var newTemp = convert(toCelsius, temp);
     $("#temperature").html(newTemp);
-    $("#grade").html("C");
+    grade.html("C");
 	} 
 }
-
-//(function() {})();
 
 
 
