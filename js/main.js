@@ -141,7 +141,7 @@ function showWeather(data) {
     $("#location").html(address); 
     $("#temperature").html(Math.round(data.main.temp)); 
   $("#grade").html("C");
-       $("#icon").html('<img alt="weather icon" class="" src="http://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/' +  data.weather[0].icon + '.png">'); 
+       $("#icon1").html('<img alt="weather icon" class="" src="http://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/' +  data.weather[0].icon + '.png">'); 
        $("#description").html(data.weather[0].description); 
       var degree = data.wind.deg;
       console.log("degree is: " + degree);
@@ -153,9 +153,10 @@ function showWeather(data) {
        $("#beaufort").html(beaufort); 
 
        var altText = "wind: "  + windDirection + ", " + beaufort + " Beaufort";
-       $("#wind").attr("alt", altText);
+       $("#icon2").attr("alt", altText);
     
        $("#arrow").css("transform", "rotate(" + arrowDirection + "deg)");
+       $("#details").removeClass("invisible");
   console.log("showWeather is Celsius is: " + isCelsius);
   if(isCelsius){
       $("#tempBtn").html("To Fahrenheit");
