@@ -52,8 +52,8 @@ function getPositionPrecise(pos) {
   This works, although position is not as accurate  */
 function getPositionApprox() {
   var message =  $("#message");
-  message.html("Getting your exact position failed. Click 'Other location' to get it.");
-  message.css("background-color", "var(--blue)");
+  message.html("Not the location you expected? Click 'Other location' and choose yours.");
+  message.css("background-color", "rgba(113, 218, 234, 1)");
   message.removeClass("invisible");
   $.ajax({
       url: "https://ipinfo.io/geo",

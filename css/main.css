@@ -1,21 +1,23 @@
+/*  this doesn't work well in IE and Edge
 :root {
 	--transparent: rgba(255,255,255, 0.6);
-  --light: rgba(244,244,239, 1); /* #f4f4f0; lightest grey in icons cloud  */
-  --dark: #0d0735;  /* rgba(13, 7, 53, 1) black in icons */
-  --blue: rgba(113, 218, 234, 1); /* #71daea   blue in icons */
-  --brightBlue: rgba(58, 235, 253, 1); /* #3aebfd   blue in misticon*/
-  --darkBlue: rgba(4, 156, 180, 1); /*#049cb4   blue in navbar*/
+  --light: rgba(244,244,239, 1); // #f4f4f0; lightest grey in icons cloud  
+  --dark: #0d0735;  // rgba(13, 7, 53, 1) black in icons 
+  --blue: rgba(113, 218, 234, 1); // #71daea   blue in icons 
+  --brightBlue: rgba(58, 235, 253, 1); /* #3aebfd   blue in misticon
+  --darkBlue: rgba(4, 156, 180, 1); //#049cb4   blue in navbar
   
-}
+}*/
+
 body {
-  color: var(--dark);
+  color: #0d0735;
 	/* font-family: 'Montserrat', sans-serif; 
   font-family: 'Dosis', sans-serif;
   font-weight: 300; */
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
   font-size: 14px;
-  background-color: var(--blue);
+  background-color: rgba(113, 218, 234, 1);
 }	
 .invisible {
   display: none;
@@ -24,7 +26,7 @@ body {
   padding: 0px 0;
 }
 .main { 
-  background-color: var(--transparent);	
+  background-color: rgba(255,255,255, 0.6);	
   position: absolute;
   top:0;
   bottom: 0;
@@ -77,26 +79,26 @@ svg {
   font-size: 24px;
   font-weight: 800;
   border-radius: 50%;
-  border: 4px solid var(--brightBlue);  
+  border: 4px solid rgba(58, 235, 253, 1);  
   width: 56px;
   height: 56px;  
   padding: 4px;
-  background-color: var(--light);
+  background-color: rgba(244,244,239, 1); ;
 }
  
 
 /*  modal   */
 .fade {
-  background-color: var(--darkBlue);    /*  var(--darkBlue) */
+  background-color: rgba(4, 156, 180, 1);    
   opacity: 0.5;
 }
 .modal-content{
-  border: 0px solid var(--blue);
-  background-color: var(--light);
+  border: 0px solid rgba(113, 218, 234, 1);
+  background-color: rgba(244,244,239, 1);
   padding: 0px 0px 0 0px;
 }
 .modal-header {
-  border-bottom: 0px solid var(--blue);
+  border-bottom: 0px solid rgba(113, 218, 234, 1);
   padding: 10px 15px 0 15px;
 }
 .modal-body {
@@ -104,7 +106,7 @@ svg {
 }
 .modal-footer {
   padding: 10px 15px 10px 15px;
-  border-top: 0px solid var(--blue);
+  border-top: 0px solid rgba(113, 218, 234, 1); 
 }
 .modal-title {
   font-weight: 800;
@@ -127,7 +129,7 @@ button.close {
   margin: 10px 10px;
 }
 .btn {
-  border: 4px solid var(--brightBlue);
+  border: 4px solid rgba(58, 235, 253, 1);
   border-radius: 4px;
   background-color: white;
   margin: 0 5px;
@@ -145,7 +147,7 @@ button:hover{
 
 /*  navbar */
 .navbar {
-	background-color: var(--darkBlue);
+	background-color: rgba(4, 156, 180, 1);
   text-align: center;
   box-shadow: 0 5px 15px rgba(0,0,0,.5);
 }
@@ -167,8 +169,8 @@ button:hover{
   padding: 10px;
 }
 button{
-  background-color: var(--brightBlue);
-  color: var(--dark);
+  background-color: rgba(58, 235, 253, 1);
+  color: #0d0735;
   padding: 10px;
   margin: 20px;
   font-weight: 600;
@@ -182,7 +184,7 @@ button:hover{
  
   .main {
     border-radius: 10px;
-    border: 4px solid var(--light);
+    border: 4px solid rgba(244,244,239, 1);
   	padding-top: 20px;
     margin-top: 90px;
     position: relative;
