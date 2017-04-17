@@ -1,7 +1,8 @@
 $(document).ready(function() {	
   init();
   $("#tempBtn").click(changeGrade);
-  $("#locBtn").click(changeLocation); 
+  $("#locBtn").click(changeLocation);
+  $("#myLocBtn").click(changeLocation); 
 
   $("#locModal").on("shown.bs.modal", function () {
     $('#city').focus();
@@ -52,8 +53,8 @@ function getPositionPrecise(pos) {
   This works, although position is not as accurate  */
 function getPositionApprox() {
   var message =  $("#message");
-  message.html("Not the location you expected? Click 'Other location' and choose yours.");
-  message.css("background-color", "rgba(113, 218, 234, 1)");
+  message.html('Not the right location? <br><button id="myLocBtn" type="button" class="btn " data-toggle="modal"  data-target="#locModal">Choose location</button>' );
+  //message.css("background-color", "rgba(113, 218, 234, 1)");
   message.removeClass("invisible");
   $.ajax({
       url: "https://ipinfo.io/geo",
@@ -143,14 +144,14 @@ function showWeather(data) {
   $("#details").removeClass("invisible");
 }
 
-function changeLocation(e) {  
-  $("#message").addClass("invisible");
+function changeLocation(e) { 
   var city = $("#city").val();
-//  console.log("city is: "+ city);
-  var country = $("#country").val();
-//  console.log("country is " + country);
-  getWeatherByLocation(city, country); 
-  $("#tempBtn").html("To Fahrenheit");
+  if (city !== "") {
+    $("#message").addClass("invisible");
+    var country = $("#country").val();
+    getWeatherByLocation(city, country); 
+    $("#tempBtn").html("To Fahrenheit");
+  }   
 }
 
 function changeDirection(typeOfDirection, degree) {

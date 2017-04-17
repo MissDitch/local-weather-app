@@ -1,14 +1,3 @@
-/*  this doesn't work well in IE and Edge
-:root {
-	--transparent: rgba(255,255,255, 0.6);
-  --light: rgba(244,244,239, 1); // #f4f4f0; lightest grey in icons cloud  
-  --dark: #0d0735;  // rgba(13, 7, 53, 1) black in icons 
-  --blue: rgba(113, 218, 234, 1); // #71daea   blue in icons 
-  --brightBlue: rgba(58, 235, 253, 1); /* #3aebfd   blue in misticon
-  --darkBlue: rgba(4, 156, 180, 1); //#049cb4   blue in navbar
-  
-}*/
-
 body {
   color: #0d0735;
 	/* font-family: 'Montserrat', sans-serif; 
@@ -128,6 +117,11 @@ button.close {
 .form-input {
   margin: 10px 10px;
 }
+#locModal button{  
+  margin: 0px;
+}
+
+/* buttons  */
 .btn {
   border: 4px solid rgba(58, 235, 253, 1);
   border-radius: 4px;
@@ -136,13 +130,19 @@ button.close {
   font-size: 14px;
   font-weight: 800;
 }
-#locModal button{  
-  margin: 0px;
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
+  outline: none;
 }
+
 button:hover{
   opacity: 0.7;
 }
-
+button#myLocBtn {
+  border: 4px solid rgba(4, 156, 180, 1);
+  background-color: rgba(4, 156, 180, 1);
+  color: #ffffff;
+  margin: 5px;
+}
 
 
 /*  navbar */
