@@ -38,7 +38,8 @@ function init() {
 
 //https://crossorigin.me/ //not working anymore
 //https://cors-anywhere.herokuapp.com/
-
+// more info here:
+// https://forum.freecodecamp.com/t/local-weather-api-for-people-stuck-because-of-the-https-request/50274/18
 
 function getPositionPrecise(pos) {
   var crd = pos.coords;
@@ -72,19 +73,19 @@ function getPositionApprox() {
 }
 
 function makeQueryString(latitude, longitude) {
-   var queryString = "http://maps.googleapis.com/maps/api/geocode/json?latlng=";
+   var queryString = "https://cors-anywhere.herokuapp.com/http://maps.googleapis.com/maps/api/geocode/json?latlng=";
   queryString += latitude + "," + longitude + "&sensor=true";
   return queryString;
 }
 
 function makeQueryStringAlt(cityName, countryCode) {
-var queryString = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName +  "," + countryCode + "&units=metric&APPID=e499501d29e2da5a054467f5367424bc";
+var queryString = "https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?q=" + cityName +  "," + countryCode + "&units=metric&APPID=e499501d29e2da5a054467f5367424bc";
  
   return queryString;
 }
 
 function getWeatherByCoord(latitude, longitude) {
-  var queryString = "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude +  "&lon=" + longitude + "&units=metric&APPID=e499501d29e2da5a054467f5367424bc";
+  var queryString = "https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat=" + latitude +  "&lon=" + longitude + "&units=metric&APPID=e499501d29e2da5a054467f5367424bc";
   $.ajax( {
     url: queryString,
     success: function(data) {    
